@@ -1,269 +1,108 @@
 <!DOCTYPE html>
-<html lang="es">
+<html ng-app="koowexaApp">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="description" content="Suri_Nails - Servicios profesionales de manicura, pedicura, depilación con cera y tinte henna en Managua, Nicaragua">
-<title>Suri_Nails</title>
-<link rel="icon" type="image/jpg" href="logo.jpg">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,sans-serif;line-height:1.6;color:#333;background-color:#f9f9f9;padding-bottom:50px}
-.container{max-width:1200px;margin:0 auto;padding:0 15px}
-header{background-color:#ff85a2;color:white;padding:15px 0;text-align:center}
-h1{font-size:24px}
-section{padding:20px 0;border-bottom:1px solid #eee}
-h2{color:#ff85a2;margin-bottom:15px;font-size:22px}
-h3{background-color:#ff85a2;color:white;padding:10px;margin:15px 0 10px;border-radius:5px}
-.price-item{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dotted #ddd}
-.price-item:last-child{border-bottom:none}
-.contact-item{margin-bottom:15px}
-.btn{display:inline-block;background-color:#ff85a2;color:white;padding:8px 15px;border-radius:5px;text-decoration:none;margin-top:5px;font-size:14px}
-.watermark{position:fixed;bottom:10px;right:10px;background-color:rgba(0,0,0,0.7);color:white;padding:5px 8px;border-radius:3px;font-size:12px;z-index:1000}
-.watermark a{color:#ff85a2;text-decoration:none}
-.marketing-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.95);z-index:9999;justify-content:center;align-items:center}
-.marketing-content{background-color:white;padding:25px;border-radius:10px;max-width:500px;width:90%;text-align:center;position:relative;box-shadow:0 10px 30px rgba(0,0,0,0.5)}
-.marketing-close{position:absolute;top:10px;right:15px;font-size:24px;cursor:not-allowed;color:#999;background-color:#f0f0f0;width:30px;height:30px;border-radius:50%;display:flex;justify-content:center;align-items:center}
-.marketing-close.active{cursor:pointer;color:#333;background-color:#ff85a2;color:white}
-.marketing-video-link{display:block;background-color:#ff0000;color:white;padding:15px;margin:20px 0;border-radius:8px;text-decoration:none;font-weight:bold;font-size:18px;transition:transform 0.3s,background-color 0.3s}
-.marketing-video-link:hover{background-color:#cc0000;transform:scale(1.05)}
-.countdown-timer{font-size:14px;color:#666;margin-top:15px;padding:10px;background-color:#f8f8f8;border-radius:5px}
-.timer-number{font-weight:bold;color:#ff85a2;font-size:18px}
-.interface-blocker{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background-color:transparent;z-index:9998}
-.notification{position:fixed;top:20px;right:20px;background-color:#ff85a2;color:white;padding:12px 15px;border-radius:5px;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:1500;display:none;max-width:300px;font-size:14px;animation:slideIn 0.5s ease}
-@keyframes slideIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
-.notification-close{position:absolute;top:5px;right:10px;cursor:pointer;font-size:16px;color:white}
-</style>
+    <title>La Marea</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
+        body{background-color:#f8f9fa;color:#333;line-height:1.6}
+        .header{background:linear-gradient(135deg,#2c3e50 0%,#1a2530 100%);color:white;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 3px 10px rgba(0,0,0,0.1);position:sticky;top:0;z-index:100}
+        .logo-container{display:flex;align-items:center;gap:12px}
+        .logo{width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,#3498db 0%,#1abc9c 100%);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:18px;background-image:url('favicon.png');background-size:cover}
+        .brand-name{font-weight:700;font-size:22px;letter-spacing:1px}
+        .brand-subtitle{font-size:12px;opacity:0.8;margin-top:2px}
+        .search-container{flex-grow:1;max-width:500px;margin:0 20px}
+        .search-box{width:100%;padding:10px 15px;border-radius:50px;border:none;font-size:14px;background-color:rgba(255,255,255,0.15);color:white;transition:all 0.3s}
+        .search-box:focus{outline:none;background-color:rgba(255,255,255,0.25);box-shadow:0 0 0 2px rgba(52,152,219,0.5)}
+        .search-box::placeholder{color:rgba(255,255,255,0.7)}
+        .main-container{max-width:1200px;margin:0 auto;padding:20px;min-height:calc(100vh - 76px)}
+        .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr));gap:20px}
+        .product-card{background-color:white;border-radius:12px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,0.05);transition:transform 0.3s,box-shadow 0.3s;display:flex;flex-direction:column;height:100%}
+        .product-card:hover{transform:translateY(-5px);box-shadow:0 8px 20px rgba(0,0,0,0.1)}
+        .product-image{height:180px;background-color:#f5f7fa;display:flex;align-items:center;justify-content:center;overflow:hidden}
+        .product-image img{max-width:100%;max-height:100%;object-fit:contain;width:100%;height:180px}
+        .product-info{padding:20px;flex-grow:1;display:flex;flex-direction:column}
+        .product-name{font-weight:700;font-size:18px;margin-bottom:15px;color:#2c3e50}
+        .product-code{font-size:12px;color:#999;margin-bottom:5px}
+        .whatsapp-btn{background-color:#25D366;color:white;border:none;padding:12px;border-radius:8px;cursor:pointer;font-weight:600;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px;transition:background-color 0.3s;margin-top:auto}
+        .whatsapp-btn:hover{background-color:#1da851}
+        .watermark{position:fixed;bottom:20px;right:20px;color:rgba(0,0,0,0.15);font-size:28px;font-weight:900;letter-spacing:2px;transform:rotate(-15deg);z-index:999;pointer-events:none;user-select:none}
+        .watermark a{color:inherit;text-decoration:none;pointer-events:auto}
+        .empty-state{text-align:center;padding:60px 20px;color:#7f8c8d}
+        .empty-state i{font-size:60px;margin-bottom:20px;color:#bdc3c7}
+        @media (max-width:768px){.header{flex-direction:column;align-items:flex-start;padding:15px}.search-container{width:100%;margin:15px 0;max-width:100%}.watermark{font-size:22px;bottom:15px;right:15px}}
+        @media (max-width:576px){.products-grid{grid-template-columns:1fr}}
+        @media (prefers-reduced-motion:reduce){.product-card,.search-box,.whatsapp-btn{transition:none}}
+    </style>
 </head>
-<body>
-<div class="interface-blocker" id="interfaceBlocker"></div>
-<div class="watermark">Patrocinado por <a href="https://koowexa.github.io/oficial/" target="_blank">KOOWEXA</a></div>
-<div id="marketingModal" class="marketing-modal">
-<div class="marketing-content">
-<span class="marketing-close" id="closeMarketingModal">&times;</span>
-<h2>📢 ¡Atención!</h2>
-<p>Por favor, mira este video promocional antes de continuar:</p>
-<div id="marketingLinks"></div>
-<div class="countdown-timer">Podrás cerrar este anuncio en <span id="countdown" class="timer-number">30</span> segundos</div>
-<p style="margin-top:15px;font-size:13px;color:#777">Esta página es posible gracias a nuestros patrocinadores</p>
-</div>
-</div>
-<div id="notification" class="notification">
-<span class="notification-close" id="closeNotification">&times;</span>
-<div id="notificationContent"></div>
-</div>
-<header>
-<div class="container">
-<h1>💅 Suri_Nails</h1>
-</div>
-</header>
-<div class="container">
-<section>
-<h2>Lista de Precios</h2>
-<p>Servicios profesionales de belleza con precios accesibles</p>
-</section>
-<section>
-<h3>Esmaltado de gel</h3>
-<div class="price-item"><span>Manos</span><span>800cup / 2usd</span></div>
-<div class="price-item"><span>Pies</span><span>800cup / 2usd</span></div>
-</section>
-<section>
-<h3>Base rubber</h3>
-<div class="price-item"><span>Cortas</span><span>1300cup / 2usd</span></div>
-<div class="price-item"><span>Medianas</span><span>1500cup / 3usd</span></div>
-<div class="price-item"><span>Largas</span><span>1700cup / 4usd</span></div>
-</section>
-<section>
-<h3>Poligel o builder en los pies</h3>
-<div class="price-item"><span>Dedos gordo</span><span>1200cup / 2usd</span></div>
-<div class="price-item"><span>Relleno dedo gordo</span><span>1000cup / 2usd</span></div>
-<div class="price-item"><span>En todas las uñas</span><span>1500cup / 3usd</span></div>
-<div class="price-item"><span>Relleno todas las uñas</span><span>1200cup / 2usd</span></div>
-</section>
-<section>
-<h3>Base rubber en los pies</h3>
-<div class="price-item"><span>Base rubber en los pies</span><span>1100cup / 2usd</span></div>
-</section>
-<section>
-<h3>Pedicura</h3>
-<div class="price-item"><span>Pedicura con jelly spa</span><span>1800cup / 3usd</span></div>
-</section>
-<section>
-<h3>Uñas de poligel</h3>
-<div class="price-item"><span>Cortas #1-2</span><span>2100cup / 5usd</span></div>
-<div class="price-item"><span>Relleno cortas</span><span>1500cup / 4usd</span></div>
-<div class="price-item"><span>Medianas #3-4</span><span>2500cup / 6usd</span></div>
-<div class="price-item"><span>Relleno medianas</span><span>1800cup / 5usd</span></div>
-<div class="price-item"><span>Largas #5-6</span><span>3300cup / 7usd</span></div>
-<div class="price-item"><span>Relleno largas</span><span>2600cup / 6usd</span></div>
-</section>
-<section>
-<h3>Relleno de uñas acrílicas</h3>
-<div class="price-item"><span>Cortas</span><span>1600cup</span></div>
-<div class="price-item"><span>Medianas</span><span>1800cup</span></div>
-<div class="price-item"><span>Largas</span><span>2000cup</span></div>
-</section>
-<section>
-<h3>Servicios adicionales</h3>
-<div class="price-item"><span>Cada uña caída</span><span>100/200cup</span></div>
-<div class="price-item"><span>Retiro de uñas</span><span>500cup</span></div>
-<div class="price-item"><span>Decoración</span><span>100/200cup</span></div>
-</section>
-<section>
-<h3>Depilación con cera</h3>
-<div class="price-item"><span>Cejas</span><span>300cup</span></div>
-<div class="price-item"><span>Bigote</span><span>300cup</span></div>
-<div class="price-item"><span>Barbilla</span><span>300cup</span></div>
-</section>
-<section>
-<h3>Tinte henna</h3>
-<div class="price-item"><span>Tinte henna</span><span>300cup</span></div>
-</section>
-<section>
-<h2>Contacto</h2>
-<div class="contact-item">
-<h3>Dirección</h3>
-<p>Calle entrada entre Cowley y Vento Boyero x los 12 planta D Vento</p>
-</div>
-<div class="contact-item">
-<h3>Teléfono / WhatsApp</h3>
-<p>+53 5 5918705</p>
-<a href="https://wa.me/5355918705?text=Hola,%20te%20contacto%20desde%20la%20página%20web%20Suri%20Nails.%20Quiero%20solicitar%20tus%20servicios%20de%20manicura." class="btn" target="_blank">Enviar Mensaje</a>
-</div>
-<div class="contact-item">
-<h3>Grupo de WhatsApp</h3>
-<p>Únete a mi grupo para conocer los turnos semanales</p>
-<a href="https://chat.whatsapp.com/B51iu3M4goNHW4wpHzhtVW" class="btn" target="_blank">Unirse al Grupo</a>
-</div>
-</section>
-</div>
-<script>
-const marketingLinks=[
-{url:"https://youtube.com/shorts/GESez9HqRa4?si=UhEF75hWUr9P-KOl",title:"Video promocional 1"},
-{url:"https://youtube.com/shorts/ZNQTm72EcnU?si=Bf5s8tX-YszH6W8A",title:"Video promocional 2"},
-{url:"https://youtube.com/shorts/ejemplo3",title:"Video promocional 3"},
-{url:"https://youtube.com/shorts/ejemplo4",title:"Video promocional 4"}
-];
-let currentLinkIndex=0;
-let countdownTimer=30;
-let countdownInterval;
-let notificationInterval;
-let marketingModalClosed=false;
-const marketingModal=document.getElementById('marketingModal');
-const closeMarketingModal=document.getElementById('closeMarketingModal');
-const marketingLinksContainer=document.getElementById('marketingLinks');
-const notification=document.getElementById('notification');
-const closeNotification=document.getElementById('closeNotification');
-const notificationContent=document.getElementById('notificationContent');
-const interfaceBlocker=document.getElementById('interfaceBlocker');
-const countdownElement=document.getElementById('countdown');
-function getRandomLinkIndex(previousIndex){
-let newIndex;
-do{
-newIndex=Math.floor(Math.random()*marketingLinks.length);
-}while(newIndex===previousIndex&&marketingLinks.length>1);
-return newIndex;
-}
-function showMarketingModal(){
-const visitedAds=JSON.parse(localStorage.getItem('visitedAds'))||[];
-let availableLinks=marketingLinks.filter((link,index)=>!visitedAds.includes(index));
-if(availableLinks.length===0){
-availableLinks=marketingLinks;
-localStorage.removeItem('visitedAds');
-}
-const randomIndex=Math.floor(Math.random()*availableLinks.length);
-const selectedIndex=marketingLinks.indexOf(availableLinks[randomIndex]);
-currentLinkIndex=selectedIndex;
-visitedAds.push(selectedIndex);
-localStorage.setItem('visitedAds',JSON.stringify(visitedAds));
-const link=marketingLinks[currentLinkIndex];
-marketingLinksContainer.innerHTML=`<a href="${link.url}" class="marketing-video-link" target="_blank">▶️ Ver video: ${link.title}</a><p style="font-size:14px;color:#666">Haz clic en el botón para abrir el video</p>`;
-interfaceBlocker.style.display='block';
-marketingModal.style.display='flex';
-startCountdown();
-closeMarketingModal.classList.remove('active');
-closeMarketingModal.style.cursor='not-allowed';
-}
-function startCountdown(){
-countdownTimer=30;
-countdownElement.textContent=countdownTimer;
-if(countdownInterval)clearInterval(countdownInterval);
-countdownInterval=setInterval(()=>{
-countdownTimer--;
-countdownElement.textContent=countdownTimer;
-if(countdownTimer<=0){
-clearInterval(countdownInterval);
-closeMarketingModal.classList.add('active');
-closeMarketingModal.style.cursor='pointer';
-showNotification("✅ Ahora puedes cerrar el anuncio");
-}
-},1000);
-}
-function closeMarketingModalFunc(){
-if(countdownTimer<=0){
-marketingModal.style.display='none';
-interfaceBlocker.style.display='none';
-marketingModalClosed=true;
-showNotification("👋 ¡Bienvenida a Suri_Nails! Disfruta de nuestros servicios");
-startNotificationSystem();
-}else{
-showNotification(`⏳ Espera ${countdownTimer} segundos para cerrar el anuncio`);
-}
-}
-function showNotification(message){
-notificationContent.textContent=message;
-notification.style.display='block';
-setTimeout(()=>{
-notification.style.display='none';
-},4000);
-}
-function startNotificationSystem(){
-setTimeout(()=>{
-showNotification("💖 ¿Necesitas una manicura? ¡Tenemos precios especiales!");
-},5000);
-notificationInterval=setInterval(()=>{
-const messages=["✨ Mira nuestros diseños de uñas","👣 Pedicura con jelly spa disponible","📅 Únete a nuestro grupo de WhatsApp para turnos","💅 Servicios profesionales de belleza"];
-const randomMessage=messages[Math.floor(Math.random()*messages.length)];
-showNotification(randomMessage);
-},60000);
-}
-closeMarketingModal.addEventListener('click',closeMarketingModalFunc);
-closeNotification.addEventListener('click',()=>{
-notification.style.display='none';
-});
-interfaceBlocker.addEventListener('click',(event)=>{
-event.stopPropagation();
-showNotification("👆 Por favor, interactúa con el anuncio primero");
-});
-document.addEventListener('click',(event)=>{
-if(marketingModal.style.display==='flex'&&!marketingModal.contains(event.target)){
-event.preventDefault();
-event.stopPropagation();
-showNotification("👆 Debes interactuar con el anuncio para continuar");
-}
-},true);
-document.addEventListener('DOMContentLoaded',function(){
-const adShownToday=localStorage.getItem('adShownDate');
-const today=new Date().toDateString();
-if(adShownToday!==today){
-setTimeout(()=>{
-showMarketingModal();
-localStorage.setItem('adShownDate',today);
-},2000);
-}else{
-marketingModalClosed=true;
-startNotificationSystem();
-}
-setTimeout(()=>{
-if(!marketingModalClosed){
-showNotification("🌟 Esta web está patrocinada por KOOWEXA");
-}
-},1000);
-});
-window.addEventListener('beforeunload',function(){
-if(countdownInterval)clearInterval(countdownInterval);
-if(notificationInterval)clearInterval(notificationInterval);
-});
-</script>
+<body ng-controller="MainController">
+    <header class="header">
+        <div class="logo-container">
+            <div class="logo"></div>
+            <div>
+                <div class="brand-name">La Marea</div>
+                <div class="brand-subtitle">RESERVA TU PRODUCTO</div>
+            </div>
+        </div>
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="Buscar productos..." ng-model="searchText" ng-change="filterProducts()">
+        </div>
+    </header>
+    <div class="main-container">
+        <div class="products-grid" ng-if="filteredProducts.length > 0">
+            <div class="product-card" ng-repeat="product in filteredProducts">
+                <div class="product-image">
+                    <img ng-src="{{product.image}}" alt="{{product.name}}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x180/ECEFF1/607D8B?text=Producto'">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">{{product.name}}</h3>
+                    <div class="product-code">Código: {{product.code}}</div>
+                    <button class="whatsapp-btn" ng-click="reserveProduct(product)">
+                        <i class="fab fa-whatsapp"></i> Reservar por WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="empty-state" ng-if="filteredProducts.length === 0">
+            <i class="fas fa-box-open"></i>
+            <h3>No se encontraron productos</h3>
+            <p>Intenta con otra búsqueda</p>
+        </div>
+    </div>
+    <div class="watermark">
+        <a href="https://koowexa.github.io/oficial/" target="_blank" rel="noopener">KOOWEXA</a>
+    </div>
+    <script>
+        angular.module('koowexaApp', []).controller('MainController', function($scope) {
+            $scope.products = [
+                {id:1,name:"Disponible",code:"P-2026",image:"1.jpg"},
+                {id:2,name:"Disponible",code:"P-2026",image:"2.jpg"},
+                {id:3,name:"Disponible",code:"P-2026",image:"3.jpg"},
+                {id:4,name:"Disponible",code:"P-2026",image:"4.jpg"},
+            ];
+            $scope.searchText = '';
+            $scope.filteredProducts = $scope.products;
+            $scope.filterProducts = function() {
+                var searchTextLower = $scope.searchText.toLowerCase();
+                $scope.filteredProducts = $scope.products.filter(function(product) {
+                    return searchTextLower === '' || 
+                        product.name.toLowerCase().includes(searchTextLower) ||
+                        product.code.toLowerCase().includes(searchTextLower);
+                });
+            };
+            $scope.reserveProduct = function(product) {
+                var phoneNumber = "5491122334455";
+                var message = `Hola, me gustaría reservar el producto:\n\n*${product.name}*\nCódigo: ${product.code}\n\nReserva realizada desde La Marea`;
+                var encodedMessage = encodeURIComponent(message);
+                var whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+                window.open(whatsappURL, '_blank');
+            };
+            $scope.filterProducts();
+        });
+    </script>
 </body>
 </html>
