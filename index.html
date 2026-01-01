@@ -79,10 +79,10 @@
     <script>
         angular.module('koowexaApp', []).controller('MainController', function($scope) {
             $scope.products = [
-                {id:1,name:"Disponible",code:"P-2026",image:"1.jpg"},
-                {id:2,name:"Disponible",code:"P-2026",image:"2.jpg"},
-                {id:3,name:"Disponible",code:"P-2026",image:"3.jpg"},
-                {id:4,name:"Disponible",code:"P-2026",image:"4.jpg"},
+                {id:1,name:"Disponible",code:"P-01",image:"1.jpg"},
+                {id:2,name:"Disponible",code:"P-02",image:"2.jpg"},
+                {id:3,name:"Disponible",code:"P-03",image:"3.jpg"},
+                {id:4,name:"Disponible",code:"P-04",image:"4.jpg"},
             ];
             $scope.searchText = '';
             $scope.filteredProducts = $scope.products;
@@ -95,8 +95,8 @@
                 });
             };
             $scope.reserveProduct = function(product) {
-                var phoneNumber = "5491122334455";
-                var message = `Hola, me gustaría reservar el producto:\n\n*${product.name}*\nCódigo: ${product.code}\n\nReserva realizada desde La Marea`;
+                var phoneNumber = "+5363228179";
+                var message = `Hola, visite su web y me gustaría reservar el producto:\n\n*${product.name}*\nCódigo: ${product.code}\n\nReserva realizada desde La Marea`;
                 var encodedMessage = encodeURIComponent(message);
                 var whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
                 window.open(whatsappURL, '_blank');
