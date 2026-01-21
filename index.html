@@ -1,107 +1,238 @@
 <!DOCTYPE html>
-<html ng-app="koowexaApp">
+<html lang="es">
 <head>
-    <title>La Marea</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline';">
+    <meta name="referrer" content="no-referrer">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <title>Contenido No Disponible - Página Retirada</title>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
-        body{background-color:#f8f9fa;color:#333;line-height:1.6}
-        .header{background:linear-gradient(135deg,#2c3e50 0%,#1a2530 100%);color:white;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 3px 10px rgba(0,0,0,0.1);position:sticky;top:0;z-index:100}
-        .logo-container{display:flex;align-items:center;gap:12px}
-        .logo{width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,#3498db 0%,#1abc9c 100%);display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:18px;background-image:url('favicon.png');background-size:cover}
-        .brand-name{font-weight:700;font-size:22px;letter-spacing:1px}
-        .brand-subtitle{font-size:12px;opacity:0.8;margin-top:2px}
-        .search-container{flex-grow:1;max-width:500px;margin:0 20px}
-        .search-box{width:100%;padding:10px 15px;border-radius:50px;border:none;font-size:14px;background-color:rgba(255,255,255,0.15);color:white;transition:all 0.3s}
-        .search-box:focus{outline:none;background-color:rgba(255,255,255,0.25);box-shadow:0 0 0 2px rgba(52,152,219,0.5)}
-        .search-box::placeholder{color:rgba(255,255,255,0.7)}
-        .main-container{max-width:1200px;margin:0 auto;padding:20px;min-height:calc(100vh - 76px)}
-        .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr));gap:20px}
-        .product-card{background-color:white;border-radius:12px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,0.05);transition:transform 0.3s,box-shadow 0.3s;display:flex;flex-direction:column;height:100%}
-        .product-card:hover{transform:translateY(-5px);box-shadow:0 8px 20px rgba(0,0,0,0.1)}
-        .product-image{height:180px;background-color:#f5f7fa;display:flex;align-items:center;justify-content:center;overflow:hidden}
-        .product-image img{max-width:100%;max-height:100%;object-fit:contain;width:100%;height:180px}
-        .product-info{padding:20px;flex-grow:1;display:flex;flex-direction:column}
-        .product-name{font-weight:700;font-size:18px;margin-bottom:15px;color:#2c3e50}
-        .product-code{font-size:12px;color:#999;margin-bottom:5px}
-        .whatsapp-btn{background-color:#25D366;color:white;border:none;padding:12px;border-radius:8px;cursor:pointer;font-weight:600;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px;transition:background-color 0.3s;margin-top:auto}
-        .whatsapp-btn:hover{background-color:#1da851}
-        .watermark{position:fixed;bottom:20px;right:20px;color:rgba(0,0,0,0.15);font-size:28px;font-weight:900;letter-spacing:2px;transform:rotate(-15deg);z-index:999;pointer-events:none;user-select:none}
-        .watermark a{color:inherit;text-decoration:none;pointer-events:auto}
-        .empty-state{text-align:center;padding:60px 20px;color:#7f8c8d}
-        .empty-state i{font-size:60px;margin-bottom:20px;color:#bdc3c7}
-        @media (max-width:768px){.header{flex-direction:column;align-items:flex-start;padding:15px}.search-container{width:100%;margin:15px 0;max-width:100%}.watermark{font-size:22px;bottom:15px;right:15px}}
-        @media (max-width:576px){.products-grid{grid-template-columns:1fr}}
-        @media (prefers-reduced-motion:reduce){.product-card,.search-box,.whatsapp-btn{transition:none}}
+        *{margin:0;padding:0;box-sizing:border-box}
+        
+        body{
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #212529;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .container{
+            max-width: min(600px, 90vw);
+            padding: clamp(24px, 6vw, 48px);
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 
+                0 8px 30px rgba(0, 0, 0, 0.08),
+                0 2px 4px rgba(0, 0, 0, 0.05);
+            will-change: transform;
+            animation: fadeInUp 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            transform: translateY(20px);
+            opacity: 0;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .icon{
+            font-size: clamp(56px, 12vw, 72px);
+            margin-bottom: clamp(20px, 4vw, 24px);
+            color: #d32f2f;
+            animation: pulse 2s infinite;
+            filter: drop-shadow(0 4px 6px rgba(211, 47, 47, 0.1));
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        h1{
+            font-size: clamp(1.875rem, 6vw, 2.75rem);
+            margin-bottom: clamp(16px, 3vw, 20px);
+            color: #b71c1c;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+        
+        .lead{
+            font-size: clamp(1.125rem, 4vw, 1.25rem);
+            color: #495057;
+            margin-bottom: clamp(20px, 4vw, 24px);
+            font-weight: 400;
+            max-width: 32em;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .details{
+            background-color: #f8f9fa;
+            border-left: 4px solid #d32f2f;
+            padding: 18px 20px;
+            margin-top: clamp(20px, 4vw, 28px);
+            text-align: left;
+            font-size: clamp(0.9375rem, 2.5vw, 1rem);
+            color: #343a40;
+            border-radius: 0 8px 8px 0;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+        }
+        
+        .actions{
+            margin-top: clamp(24px, 5vw, 32px);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+        }
+        
+        .btn{
+            padding: 16px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.0625rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transform: translateZ(0);
+            letter-spacing: 0.01em;
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        
+        .btn:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(40, 40);
+                opacity: 0;
+            }
+        }
+        
+        .btn-back{
+            background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(183, 28, 28, 0.25);
+        }
+        
+        .btn-back:hover{
+            background: linear-gradient(135deg, #c62828 0%, #a41616 100%);
+            box-shadow: 0 6px 16px rgba(183, 28, 28, 0.35);
+            transform: translateY(-2px);
+        }
+        
+        .btn-whatsapp{
+            background: linear-gradient(135deg, #25d366 0%, #1da851 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+        }
+        
+        .btn-whatsapp:hover{
+            background: linear-gradient(135deg, #20bd5c 0%, #189544 100%);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35);
+            transform: translateY(-2px);
+        }
+        
+        @media (min-width: 480px){
+            .actions{
+                flex-direction: row;
+                justify-content: center;
+            }
+            .btn{
+                min-width: 220px;
+            }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .container, .btn, .icon {
+                animation: none;
+                transition: none;
+            }
+        }
     </style>
 </head>
-<body ng-controller="MainController">
-    <header class="header">
-        <div class="logo-container">
-            <div class="logo"></div>
-            <div>
-                <div class="brand-name">La Marea</div>
-                <div class="brand-subtitle">RESERVA TU PRODUCTO</div>
-            </div>
+<body>
+    <div class="container">
+        <div class="icon" aria-hidden="true">⚠️</div>
+        <h1>Contenido No Disponible</h1>
+        <p class="lead">Esta página ha sido retirada permanentemente y su contenido ya no está disponible en Koopages ni en internet.</p>
+        <div class="details">
+            <strong>Información:</strong> El propietario del sitio web decidió retirar esta página de forma inmediata. Si necesitas acceder a este contenido, contacta directamente con el propietario.
         </div>
-        <div class="search-container">
-            <input type="text" class="search-box" placeholder="Buscar productos..." ng-model="searchText" ng-change="filterProducts()">
+        
+        <div class="actions">
+            <a href="https://koopages.github.io/oficial/" class="btn btn-back" aria-label="Volver a la página oficial de Koopages">
+                Volver a Koopages Oficial
+            </a>
+            <a href="https://wa.me/+5363228179?text=Hola,%20estoy%20contactando%20porque%20la%20página%20que%20tenías%20en%20Koopages%20ha%20sido%20retirada.%20Me%20gustaría%20saber%20más%20información%20sobre%20el%20motivo%20y%20si%20hay%20alguna%20alternativa%20disponible." class="btn btn-whatsapp" aria-label="Contactar al propietario vía WhatsApp">
+                Contactar al Propietario
+            </a>
         </div>
-    </header>
-    <div class="main-container">
-        <div class="products-grid" ng-if="filteredProducts.length > 0">
-            <div class="product-card" ng-repeat="product in filteredProducts">
-                <div class="product-image">
-                    <img ng-src="{{product.image}}" alt="{{product.name}}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x180/ECEFF1/607D8B?text=Producto'">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-name">{{product.name}}</h3>
-                    <div class="product-code">Código: {{product.code}}</div>
-                    <button class="whatsapp-btn" ng-click="reserveProduct(product)">
-                        <i class="fab fa-whatsapp"></i> Reservar por WhatsApp
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="empty-state" ng-if="filteredProducts.length === 0">
-            <i class="fas fa-box-open"></i>
-            <h3>No se encontraron productos</h3>
-            <p>Intenta con otra búsqueda</p>
-        </div>
-    </div>
-    <div class="watermark">
-        <a href="https://koowexa.github.io/oficial/" target="_blank" rel="noopener">KOOWEXA</a>
     </div>
     <script>
-        angular.module('koowexaApp', []).controller('MainController', function($scope) {
-            $scope.products = [
-                {id:1,name:"Disponible",code:"P-01",image:"1.jpg"},
-                {id:2,name:"Disponible",code:"P-02",image:"2.jpg"},
-                {id:3,name:"Disponible",code:"P-03",image:"3.jpg"},
-                {id:4,name:"Disponible",code:"P-04",image:"4.jpg"},
-            ];
-            $scope.searchText = '';
-            $scope.filteredProducts = $scope.products;
-            $scope.filterProducts = function() {
-                var searchTextLower = $scope.searchText.toLowerCase();
-                $scope.filteredProducts = $scope.products.filter(function(product) {
-                    return searchTextLower === '' || 
-                        product.name.toLowerCase().includes(searchTextLower) ||
-                        product.code.toLowerCase().includes(searchTextLower);
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animación de entrada suave
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.4s ease-out';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 50);
+            
+            // Prevenir inspección
+            window.addEventListener('contextmenu', e => e.preventDefault());
+            document.addEventListener('keydown', e => {
+                if ((e.ctrlKey && (e.key === 'u' || e.key === 's')) || 
+                    (e.key === 'F12') ||
+                    (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J'))) {
+                    e.preventDefault();
+                }
+            });
+            
+            // Mejorar accesibilidad de botones
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.target.click();
+                    }
                 });
-            };
-            $scope.reserveProduct = function(product) {
-                var phoneNumber = "+5363228179";
-                var message = `Hola, visite su web y me gustaría reservar el producto:\n\n*${product.name}*\nCódigo: ${product.code}\n\nReserva realizada desde La Marea`;
-                var encodedMessage = encodeURIComponent(message);
-                var whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-                window.open(whatsappURL, '_blank');
-            };
-            $scope.filterProducts();
+            });
         });
     </script>
 </body>
